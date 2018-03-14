@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  status: false
+  profile: one
+  requirement: one
+
+two:
+  status: false
+  profile: two
+  requirement: two
