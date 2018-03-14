@@ -1,0 +1,24 @@
+= form_for @skill do |f|
+  - if @skill.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@skill.errors.count, "error")} prohibited this skill from being saved:"
+      %ul
+        - @skill.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :name
+    = f.text_field :name
+    
+  %h2 New concept
+  = f.fields_for :requirements, Requirement.new do |ff|
+    .field
+      = ff.label :name
+      = ff.text_field :name
+  .actions
+    = f.submit 'Save'
+
+%h2 Concepts
+- @skill.requirements.each do |concept|
+  .concept
+    = "| #{concept.name} |"
