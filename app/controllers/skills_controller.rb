@@ -43,7 +43,7 @@ class SkillsController < ApplicationController
     respond_to do |format|
       if @skill.update(skill_params)
         # format.html { redirect_to @skill, notice: 'Skill was successfully updated.' }
-        format.html { render :edit, notice: 'Skill was successfully updated.' }
+        format.html { redirect_to edit_skill_url(@skill), notice: 'Skill was successfully updated.' }
         format.json { render :show, status: :ok, location: @skill }
       else
         format.html { render :edit }
