@@ -13,11 +13,11 @@
     - @requirements.each do |requirement|
       %tr
         %td= requirement.name
-        %td= requirement.skill
-        %td= link_to 'Show', requirement
-        %td= link_to 'Edit', edit_requirement_path(requirement)
-        %td= link_to 'Destroy', requirement, method: :delete, data: { confirm: 'Are you sure?' }
+        %td= requirement.skill.name
+        %td= link_to 'Show', skill_requirement_path(requirement.skill, requirement)
+        %td= link_to 'Edit', edit_skill_requirement_path(requirement.skill, requirement)
+        %td= link_to 'Destroy', skill_requirement_path(requirement.skill, requirement), method: :delete, data: { confirm: 'Are you sure?' }
 
 %br
 
-= link_to 'New Requirement', new_requirement_path
+-# = link_to 'New Requirement', new_skill_requirement_path(requirement.skill)

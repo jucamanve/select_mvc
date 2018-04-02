@@ -56,7 +56,7 @@ class RequirementsController < ApplicationController
   def destroy
     @requirement.destroy
     respond_to do |format|
-      format.html { redirect_to requirements_url, notice: 'Requirement was successfully destroyed.' }
+      format.html { redirect_to skill_requirements_url, notice: 'Requirement was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

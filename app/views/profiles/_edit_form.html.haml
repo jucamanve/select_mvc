@@ -1,24 +1,24 @@
 = form_for @profile do |f|
-    - if @profile.errors.any?
-      #error_explanation
-        %h2= "#{pluralize(@profile.errors.count, "error")} prohibited this profile from being saved:"
-        %ul
-          - @profile.errors.full_messages.each do |message|
-            %li= message
+  - if @profile.errors.any?
+    #error_explanation
+    %h2= "#{pluralize(@profile.errors.count, "error")} prohibited this profile from being saved:"
+    %ul
+      - @profile.errors.full_messages.each do |message|
+        %li= message
   
-    .field
-      = f.label :username
-      = f.text_field :username
-    .field
-      = f.label :about
-      = f.text_area :about
-    .actions
-      = f.submit 'Save'
+  .field
+    = f.label :username
+    = f.text_field :username
+  .field
+    = f.label :about
+    = f.text_area :about
+  .actions
+    = f.submit 'Save'
 
-= form_for @skill, method: :get do |f|
-    .field
-      = f.label :skill
-      = f.select(:skill_id, Skill.all.map {|skill| [skill.name.titlelize, skill.id]}, {}, {onchange: 'this.form.submit();'})
+= form_for @profile do |f|
+  .field
+    = f.label :skill
+    = f.select(:skill_ids, Skill.all.map {|skill| [skill.name.titleize, skill.id]}, {include_blank: true}, {onchange: 'this.form.submit();'})
   
 -# = form_for @profile do |f|
 
