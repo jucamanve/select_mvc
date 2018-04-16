@@ -19,6 +19,10 @@ class ProfilesController < ApplicationController
 
   # GET /profiles/1/edit
   def edit
+    @skills = Skill.all.map {|skill| [skill.name.titleize, skill.id]}
+    @selected_skill = params[:skill_id]
+    # TODO: seleccionar los abilities correspondientes al skill seleccionado
+    
   end
 
   # POST /profiles

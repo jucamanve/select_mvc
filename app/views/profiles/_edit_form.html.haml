@@ -15,11 +15,18 @@
   .actions
     = f.submit 'Save'
 
-= form_for @profile do |f|
+%h2 Add some skills
+= form_tag edit_profile_path, method: :get do
   .field
-    = f.label :skill
-    = f.select(:skill_ids, Skill.all.map {|skill| [skill.name.titleize, skill.id]}, {include_blank: true}, {onchange: 'this.form.submit();'})
-  
+    = label_tag :skill #, "Choose a skill:"
+    = label_tag :skill, "Select a skill:"
+    = select_tag(:skill_id, options_for_select( @skills, @selected_skill ), {prompt: 'Pick a skill', onchange: 'this.form.submit();'})
+%h2 Add some skills
+= form_with model: @profile do |f|
+  .field
+    = f.label :skill, "Pick a skill:"
+    = f.select(:skill_id, Skill.all.map {|skill| [skill.name.titleize, skill.id]}, {selected: @selected_skill, include_blank:  'Pick a skill'}, {onchange: 'this.form.submit();'})
+      
 -# = form_for @profile do |f|
 
 -#     .field
