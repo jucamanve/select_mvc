@@ -21,11 +21,13 @@
     = label_tag :skill #, "Choose a skill:"
     = label_tag :skill, "Select a skill:"
     = select_tag(:skill_id, options_for_select( @skills, @selected_skill ), {prompt: 'Pick a skill', onchange: 'this.form.submit();'})
+    = collection_check_boxes(:requirements, :requirement_ids, @abilities, :id, :name)
 %h2 Add some skills
 = form_with model: @profile do |f|
   .field
     = f.label :skill, "Pick a skill:"
     = f.select(:skill_id, Skill.all.map {|skill| [skill.name.titleize, skill.id]}, {selected: @selected_skill, include_blank:  'Pick a skill'}, {onchange: 'this.form.submit();'})
+    = f.collection_check_boxes(:requirement_ids, @abilities, :id, :name)
       
 -# = form_for @profile do |f|
 

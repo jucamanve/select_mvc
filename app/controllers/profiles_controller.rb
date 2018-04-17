@@ -22,7 +22,13 @@ class ProfilesController < ApplicationController
     @skills = Skill.all.map {|skill| [skill.name.titleize, skill.id]}
     @selected_skill = params[:skill_id]
     # TODO: seleccionar los abilities correspondientes al skill seleccionado
-    
+    abilities = @profile.requirements
+    if abilities.length > 0
+      @abilities = abilities
+    else
+      current_skill = Skill.find(@selected_skill)
+      @abilities = current_skill.requirements
+    end
   end
 
   # POST /profiles
